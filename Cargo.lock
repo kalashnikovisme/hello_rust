@@ -74,6 +74,7 @@ version = "0.1.0"
 dependencies = [
  "magnus",
  "serde_json",
+ "tinyjson",
 ]
 
 [[package]]
@@ -112,9 +113,9 @@ dependencies = [
 
 [[package]]
 name = "magnus"
-version = "0.4.4"
+version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fc87660cd7daa49fddbfd524c836de54d5c927d520cd163f43700c5087c57d6c"
+checksum = "ac1f63d741de829356a1399b34cbf6e79b79fc80aa85f86c8a2e7966768d95bc"
 dependencies = [
  "magnus-macros",
  "rb-sys",
@@ -123,9 +124,9 @@ dependencies = [
 
 [[package]]
 name = "magnus-macros"
-version = "0.3.0"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "206cb23bfeea05180c97522ef6a3e52a4eb17b0ed2f30ee3ca9c4f994d2378ae"
+checksum = "85aa71c9891b2732ff1157e1860a1ee578459fd25811fd3d72cc6e32b3fbdfea"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -239,9 +240,9 @@ checksum = "f91339c0467de62360649f8d3e185ca8de4224ff281f66000de5eb2a77a79041"
 
 [[package]]
 name = "serde"
-version = "1.0.156"
+version = "1.0.157"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "314b5b092c0ade17c00142951e50ced110ec27cea304b1037c6969246c2469a4"
+checksum = "707de5fcf5df2b5788fca98dd7eab490bc2fd9b7ef1404defc462833b83f25ca"
 
 [[package]]
 name = "serde_json"
@@ -276,6 +277,12 @@ dependencies = [
  "quote",
  "unicode-ident",
 ]
+
+[[package]]
+name = "tinyjson"
+version = "2.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9ab95735ea2c8fd51154d01e39cf13912a78071c2d89abc49a7ef102a7dd725a"
 
 [[package]]
 name = "unicode-ident"

@@ -8,23 +8,26 @@ gemfile(true, quiet: true) do
   gem 'oj'
 end
 
-data = File.readlines(ARGV[0]).join
 
+file_path = ARGV[0]
 start = Time.now
+data = File.readlines(file_path).join
 JSON.parse(data)["arr"][0]
 ending = Time.now
-puts "Ruby parse 1GB JSON.parse operation: #{ending - start} sec"
+puts "Ruby parse #{file_path} JSON.parse operation: #{ending - start} sec"
 
 require 'rapidjson'
 
 start = Time.now
+data = File.readlines(ARGV[0]).join
 RapidJSON.parse(data)["arr"][0]
 ending = Time.now
-puts "Ruby parse 1GB RapidJSON.parse operation: #{ending - start} sec"
+puts "Ruby parse #{file_path} RapidJSON.parse operation: #{ending - start} sec"
 
 require 'oj'
 
 start = Time.now
+data = File.readlines(ARGV[0]).join
 Oj.load(data)["arr"][0]
 ending = Time.now
-puts "Ruby parse 1GB Oj.load operation: #{ending - start} sec"
+puts "Ruby parse #{file_path} Oj.load operation: #{ending - start} sec"
