@@ -1,8 +1,7 @@
 use std;
-use magnus::{DataTypeFunctions, typed_data::DataTypeBuilder, memoize, define_class, class, method, define_module, function, prelude::*, RHash, RClass, DataType, TypedData};
+use magnus::{DataTypeFunctions, typed_data::DataTypeBuilder, memoize, define_class, class, method, define_module, function, prelude::*, RClass, DataType, TypedData};
 use std::collections::HashMap;
 use serde_json;
-// use tinyjson;
 
 fn parse_json(file_path: String) -> MyHashMap {
     let data = std::fs::read_to_string(file_path.clone()).expect("Unable to read file");
@@ -87,7 +86,7 @@ impl From<serde_json::value::Value> for JsonValue {
 }
 
 impl MyHashMap {
-    fn getByKey(&self, key: String) -> JsonValue {
+    fn get_by_key(&self, key: String) -> JsonValue {
         let val: JsonValue = (*self).0[&key].clone().into();
         dbg!(<serde_json::Value as Into<JsonValue>>::into(self.0[&key].clone()));
         val
@@ -100,7 +99,7 @@ fn init() -> Result<(), magnus::Error> {
     let module = define_module("ParseJson")?;
     module.define_singleton_method("parse_json", function!(parse_json, 1))?;
     let value_class = define_class("Value", class::object()).unwrap();
-    value_class.define_method("[]", method!(MyHashMap::getByKey, 1))?;
+    value_class.define_method("[]", method!(MyHashMap::get_by_key, 1))?;
 
     Ok(())
 }
