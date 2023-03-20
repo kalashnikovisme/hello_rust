@@ -12,7 +12,7 @@ end
 file_path = ARGV[0]
 start = Time.now
 data = File.readlines(file_path).join
-JSON.parse(data)["arr"][0]
+JSON.parse(data)["arr2"]
 ending = Time.now
 puts "Ruby parse #{file_path} JSON.parse operation: #{ending - start} sec"
 
