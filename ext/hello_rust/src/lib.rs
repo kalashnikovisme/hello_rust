@@ -18,7 +18,12 @@ struct JsonArray(Vec<serde_json::Value>);
 
 impl JsonArray {
     fn to_s(&self) -> String {
-        "Array".to_string()
+        let arr_str = self.0.iter()
+            .map(|x| x.to_string())
+            .collect::<Vec<String>>()
+            .join(", ");
+
+        arr_str
     }
 }
 
@@ -30,7 +35,6 @@ impl JsonObject {
         "Object".to_string()
     }
 }
-
 
 #[derive(Debug)]
 enum JsonValue {
@@ -50,6 +54,7 @@ impl JsonValue {
             JsonValue::Number(str) => (*str).to_string().clone(),
             JsonValue::Array(str) => (*str).to_s().clone(),
             JsonValue::Object(str) => (*str).to_s().clone(),
+            JsonValue::Null => "nil".to_string(),
             _ => todo!(),
         }
     }
@@ -88,7 +93,6 @@ impl From<serde_json::value::Value> for JsonValue {
 impl MyHashMap {
     fn get_by_key(&self, key: String) -> JsonValue {
         let val: JsonValue = (*self).0[&key].clone().into();
-        dbg!(<serde_json::Value as Into<JsonValue>>::into(self.0[&key].clone()));
         val
             
     } 

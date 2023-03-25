@@ -1,4 +1,10 @@
 start_time = Time.now
-puts ParseJson.parse_json("test-300MB.json")["arr2"]
+result = ParseJson.parse_json("test.json")
+puts result['null']
+puts result['bool']
+puts result['number']
+puts result['string']
+puts result['array']
+puts result['object']
 ending_time = Time.now
 puts "Rust time #{ending_time - start_time} sec"
