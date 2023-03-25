@@ -3,5 +3,5 @@
 # in the ext/ directory.
 
 [workspace]
-members = ["./ext/hello_rust"]
+members = ["./ext/ultimate_json"]
 resolver = "2"

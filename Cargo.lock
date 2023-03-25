@@ -69,16 +69,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d2fabcfbdc87f4758337ca535fb41a6d701b65693ce38287d856d1674551ec9b"
 
 [[package]]
-name = "hello_rust"
-version = "0.1.0"
-dependencies = [
- "magnus",
- "serde_json",
- "serde_magnus",
- "tinyjson",
-]
-
-[[package]]
 name = "itoa"
 version = "1.0.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -301,6 +291,16 @@ name = "tinyjson"
 version = "2.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ab95735ea2c8fd51154d01e39cf13912a78071c2d89abc49a7ef102a7dd725a"
+
+[[package]]
+name = "ultimate_json"
+version = "0.1.0"
+dependencies = [
+ "magnus",
+ "serde_json",
+ "serde_magnus",
+ "tinyjson",
+]
 
 [[package]]
 name = "unicode-ident"

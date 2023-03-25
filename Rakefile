@@ -13,8 +13,8 @@ require "rake/extensiontask"
 
 task build: :compile
 
-Rake::ExtensionTask.new("hello_rust") do |ext|
-  ext.lib_dir = "lib/hello_rust"
+Rake::ExtensionTask.new("ultimate_json") do |ext|
+  ext.lib_dir = "lib/ultimate_json"
 end
 
 task default: %i[compile spec rubocop]

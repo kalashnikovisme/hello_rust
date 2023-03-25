@@ -1,5 +1,5 @@
 [package]
-name = "hello_rust"
+name = "ultimate_json"
 version = "0.1.0"
 edition = "2021"
 authors = ["Pavel Kalashnikov <kalashnikovisme@gmail.com>"]

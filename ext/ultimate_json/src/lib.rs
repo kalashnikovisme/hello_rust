@@ -118,9 +118,8 @@ impl UltimateJSON {
 
 #[magnus::init]
 fn init() -> Result<(), magnus::Error> {
-    let module = define_module("ParseJson")?;
-    module.define_singleton_method("parse_json", function!(parse_json, 1))?;
     let value_class = define_class("UltimateJSON", class::object()).unwrap();
+    value_class.define_singleton_method("parse_json", function!(parse_json, 1))?;
     value_class.define_method("[]", method!(UltimateJSON::fetch, 1))?;
 
     Ok(())

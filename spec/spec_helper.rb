@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "hello_rust"
+require "ultimate_json"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

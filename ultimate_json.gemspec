@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative "lib/hello_rust/version"
+require_relative "lib/ultimate_json/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "hello_rust"
-  spec.version = HelloRust::VERSION
+  spec.name = "ultimate_json"
+  spec.version = UltimateJson::VERSION
   spec.authors = ["Pavel Kalashnikov"]
   spec.email = ["kalashnikovisme@gmail.com"]
 
   spec.summary = "Write a short summary, because RubyGems requires one."
   spec.description = "Write a longer description or delete this line."
-  spec.homepage = "https://github.com/kalashnikovisme/hello_rust"
+  spec.homepage = "https://github.com/kalashnikovisme/ultimate_json"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
   spec.required_rubygems_version = ">= 3.3.11"
@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.extensions = ["ext/hello_rust/Cargo.toml"]
+  spec.extensions = ["ext/ultimate_json/Cargo.toml"]
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe HelloRust do
+RSpec.describe UltimateJson do
   it "has a version number" do
-    expect(HelloRust::VERSION).not_to be nil
+    expect(UltimateJson::VERSION).not_to be nil
   end
 
   it "does something useful" do

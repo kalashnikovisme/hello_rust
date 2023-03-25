@@ -1,5 +1,5 @@
 start_time = Time.now
-result = ParseJson.parse_json("test.json")
+result = UltimateJSON.parse_json("test.json")
 puts result['null']
 puts result['bool']
 puts result['number']

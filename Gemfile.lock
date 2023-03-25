@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hello_rust (0.1.0)
+    ultimate_json (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -51,12 +51,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  hello_rust!
   rake (~> 13.0)
   rake-compiler
   rb_sys
   rspec (~> 3.0)
   rubocop (~> 1.21)
+  ultimate_json!
 
 BUNDLED WITH
    2.4.7
