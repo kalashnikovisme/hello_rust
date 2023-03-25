@@ -1,4 +1,4 @@
-MAX=15000000
+MAX=15000000 # 50000 ~= 1 MB
 echo "{"
 echo $(sed '1d;$d' test.json)         # ChatGPT
 echo ","

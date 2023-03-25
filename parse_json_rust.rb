@@ -1,11 +1,14 @@
-start_time = Time.now
-result = UltimateJSON.parse_json("test-100.json")
-puts result['null']
-puts result['bool']
-puts result['number']
-puts result['string']
-puts result['array']
-puts result['object']
-puts result['object'].to_h
-ending_time = Time.now
-puts "Rust time #{ending_time - start_time} sec"
+require 'benchmark'
+
+time = Benchmark.measure do
+  result = UltimateJSON.parse_json(ARGV[0])
+  puts "Nil is #{result['null']}"
+  puts "Bool is #{result['bool']}"
+  puts "Number is #{result['number']}"
+  puts "String is #{result['string']}"
+  puts "Array is #{result['array']}"
+  puts "Object is #{result['object']}"
+  puts "Object to hash #{result['object'].to_h}"
+end
+
+puts "Rust time #{time.real} sec"

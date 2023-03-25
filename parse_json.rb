@@ -1,5 +1,6 @@
 require 'json'
 require 'bundler/inline'
+require 'benchmark'
 
 gemfile(true, quiet: true) do
   source "https://rubygems.org"
@@ -10,24 +11,29 @@ end
 
 
 file_path = ARGV[0]
-start = Time.now
-data = File.readlines(file_path).join
-JSON.parse(data)["arr2"]
-ending = Time.now
-puts "Ruby parse #{file_path} JSON.parse operation: #{ending - start} sec"
 
-require 'rapidjson'
+time = Benchmark.measure do
+  data = File.readlines(file_path).join
+  JSON.parse(data)["key1"]
+end
 
-start = Time.now
-data = File.readlines(ARGV[0]).join
-RapidJSON.parse(data)["arr"][0]
-ending = Time.now
-puts "Ruby parse #{file_path} RapidJSON.parse operation: #{ending - start} sec"
+puts "Ruby parse #{file_path} JSON.parse operation: #{time.real} sec"
 
-require 'oj'
 
-start = Time.now
-data = File.readlines(ARGV[0]).join
-Oj.load(data)["arr"][0]
-ending = Time.now
-puts "Ruby parse #{file_path} Oj.load operation: #{ending - start} sec"
+time = Benchmark.measure do
+  require 'rapidjson'
+
+  data = File.readlines(ARGV[0]).join
+  RapidJSON.parse(data)["key1"]
+end
+
+puts "Ruby parse #{file_path} RapidJSON.parse operation: #{time.real} sec"
+
+time = Benchmark.measure do
+  require 'oj'
+
+  data = File.readlines(ARGV[0]).join
+  Oj.load(data)["key1"]
+end
+
+puts "Ruby parse #{file_path} Oj.load operation: #{time.real} sec"
