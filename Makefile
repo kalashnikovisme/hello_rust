@@ -1,6 +1,10 @@
 run:
 	RUST_BACKTRACE=1 bundle exec rake compile
 	RUST_BACKTRACE=1 bundle exec ruby -rhello_rust parse_json_rust.rb
+
+benchmark:
+	RUST_BACKTRACE=1 bundle exec rake compile
+	RUST_BACKTRACE=1 bundle exec ruby -rhello_rust parse_json_rust.rb
 	bundle exec ruby parse_json.rb test-300MB.json
 
 another:
