@@ -91,7 +91,7 @@ impl From<serde_json::value::Value> for JsonValue {
 }
 
 impl MyHashMap {
-    fn get_by_key(&self, key: String) -> JsonValue {
+    fn fetch(&self, key: String) -> JsonValue {
         let val: JsonValue = (*self).0[&key].clone().into();
         val
             
@@ -103,7 +103,7 @@ fn init() -> Result<(), magnus::Error> {
     let module = define_module("ParseJson")?;
     module.define_singleton_method("parse_json", function!(parse_json, 1))?;
     let value_class = define_class("Value", class::object()).unwrap();
-    value_class.define_method("[]", method!(MyHashMap::get_by_key, 1))?;
+    value_class.define_method("[]", method!(MyHashMap::fetch, 1))?;
 
     Ok(())
 }
