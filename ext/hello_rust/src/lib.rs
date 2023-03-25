@@ -37,9 +37,13 @@ impl JsonObject {
     } 
 
     fn to_s(&self) -> String {
-         let json_str = serde_json::json!((*self).0).to_string();
+         let json_str = serde_json::json!((*self).0).to_string();       // ChatGPT
 
          json_str
+    }
+
+    fn to_h(&self) -> magnus::RHash {
+        serialize(&(*self).0).unwrap()
     }
 }
 
@@ -68,7 +72,7 @@ impl JsonValue {
 
     fn to_h(&self) -> magnus::RHash {
         match self {
-            JsonValue::Object(str) => serialize(&HashMap::<String, serde_json::Value>::new()).unwrap(), // ChatGPT
+            JsonValue::Object(str) => serialize(&(str).0).unwrap(),
             _ => todo!(),
         }
     }
@@ -79,6 +83,7 @@ unsafe impl TypedData for JsonValue {
         *memoize!(RClass: {
             let class = define_class("JsonValue", class::object()).unwrap();
             class.define_method("to_s", method!(JsonValue::to_s, 0));
+            class.define_method("to_h", method!(JsonValue::to_h, 0));
             class.undef_alloc_func();
             class
         })
