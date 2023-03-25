@@ -74,6 +74,7 @@ version = "0.1.0"
 dependencies = [
  "magnus",
  "serde_json",
+ "serde_magnus",
  "tinyjson",
 ]
 
@@ -240,9 +241,9 @@ checksum = "f91339c0467de62360649f8d3e185ca8de4224ff281f66000de5eb2a77a79041"
 
 [[package]]
 name = "serde"
-version = "1.0.157"
+version = "1.0.156"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "707de5fcf5df2b5788fca98dd7eab490bc2fd9b7ef1404defc462833b83f25ca"
+checksum = "314b5b092c0ade17c00142951e50ced110ec27cea304b1037c6969246c2469a4"
 
 [[package]]
 name = "serde_json"
@@ -253,6 +254,17 @@ dependencies = [
  "itoa",
  "ryu",
  "serde",
+]
+
+[[package]]
+name = "serde_magnus"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd9ad60ac6788397a3ef27ad15887e84ee888d919e670ff37156ce96f9f2e18c"
+dependencies = [
+ "magnus",
+ "serde",
+ "tap",
 ]
 
 [[package]]
@@ -277,6 +289,12 @@ dependencies = [
  "quote",
  "unicode-ident",
 ]
+
+[[package]]
+name = "tap"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "55937e1799185b12863d447f42597ed69d9928686b8d88a1df17376a097d8369"
 
 [[package]]
 name = "tinyjson"

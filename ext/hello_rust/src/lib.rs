@@ -2,6 +2,7 @@ use std;
 use magnus::{DataTypeFunctions, typed_data::DataTypeBuilder, memoize, define_class, class, method, define_module, function, prelude::*, RClass, DataType, TypedData};
 use std::collections::HashMap;
 use serde_json;
+use serde_magnus::serialize;
 
 fn parse_json(file_path: String) -> UltimateJSON {
     let data = std::fs::read_to_string(file_path.clone()).expect("Unable to read file");
@@ -18,12 +19,11 @@ struct JsonArray(Vec<serde_json::Value>);
 
 impl JsonArray {
     fn to_s(&self) -> String {
-        let arr_str = self.0.iter()
-            .map(|x| x.to_string())
-            .collect::<Vec<String>>()
-            .join(", ");
-
-        arr_str
+        let arr_str = self.0.iter()         // ChatGPT
+            .map(|x| x.to_string())         // ChatGPT
+            .collect::<Vec<String>>()       // ChatGPT
+            .join(", ");                    // ChatGPT
+        arr_str                             // ChatGPT
     }
 }
 
@@ -31,8 +31,15 @@ impl JsonArray {
 struct JsonObject(serde_json::Map<String, serde_json::Value>);
 
 impl JsonObject {
+    fn fetch(&self, key: String) -> JsonValue {
+        let val: JsonValue = (*self).0[&key].clone().into();
+        val
+    } 
+
     fn to_s(&self) -> String {
-        "Object".to_string()
+         let json_str = serde_json::json!((*self).0).to_string();
+
+         json_str
     }
 }
 
@@ -54,7 +61,14 @@ impl JsonValue {
             JsonValue::Number(str) => (*str).to_string().clone(),
             JsonValue::Array(str) => (*str).to_s().clone(),
             JsonValue::Object(str) => (*str).to_s().clone(),
-            JsonValue::Null => "nil".to_string(),
+            JsonValue::Null => "nil".to_string(),                   // ChatGPT
+            _ => todo!(),
+        }
+    }
+
+    fn to_h(&self) -> magnus::RHash {
+        match self {
+            JsonValue::Object(str) => serialize(&HashMap::<String, serde_json::Value>::new()).unwrap(), // ChatGPT
             _ => todo!(),
         }
     }
@@ -94,7 +108,6 @@ impl UltimateJSON {
     fn fetch(&self, key: String) -> JsonValue {
         let val: JsonValue = (*self).0[&key].clone().into();
         val
-            
     } 
 }
 
